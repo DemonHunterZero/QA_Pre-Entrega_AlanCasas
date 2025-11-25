@@ -9,7 +9,7 @@ import time
 #py -m pytest tests/test_login.py -v --html=report.html --self-contained-html para ejecutarlo y realizar el reporte html
 @pytest.mark.parametrize("user, password, debe_funcionar",(
         ("standard_user","secret_sauce", True),
-        ("locked_out_user","secret_sauce", False),
+        ("locked_out_user","secret_sauce", False), #este es falso porque no es una credencial correcta
         ("problem_user","secret_sauce", True),
         ("performance_glitch_user","secret_sauce", True),
         ("error_user","secret_sauce", True),
@@ -24,6 +24,7 @@ def test_login_validation(login_in_chrome, user, password, debe_funcionar):
             assert '/inventory.html' in driver.current_url, "No se redirigio al inventario"
             print("Login exitoso y validado")
         else:
+            #Validacion para credenciales incorrectas (verifica que salga el cartel de aviso de error)
             mensaje_error = LoginPage(driver).obtener_error()
             assert "Epic sadface" in mensaje_error, "El mensaje de error no se muestra correctamente"
         

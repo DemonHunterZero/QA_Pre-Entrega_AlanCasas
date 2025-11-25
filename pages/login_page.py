@@ -48,5 +48,5 @@ class LoginPage:
         return self
     
     def obtener_error(self):
-        div_error = self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".error-message-container h3")))
+        div_error = self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,".error-message-container h3"))) #Busca el h3 que sale cuando aparece un error
         return div_error.text
