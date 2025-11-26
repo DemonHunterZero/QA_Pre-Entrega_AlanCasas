@@ -2,19 +2,13 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from pages.login_page import LoginPage
+from utils.datos import leer_csv_login
 import pytest
 import time
 
 #py -m pytest tests/test_login.py -v para ejecutarlo como prueba
 #py -m pytest tests/test_login.py -v --html=report.html --self-contained-html para ejecutarlo y realizar el reporte html
-@pytest.mark.parametrize("user, password, debe_funcionar",(
-        ("standard_user","secret_sauce", True),
-        ("locked_out_user","secret_sauce", False), #este es falso porque no es una credencial correcta
-        ("problem_user","secret_sauce", True),
-        ("performance_glitch_user","secret_sauce", True),
-        ("error_user","secret_sauce", True),
-        ("visual_user","secret_sauce", True)
-))
+@pytest.mark.parametrize("user, password, debe_funcionar", leer_csv_login("datos/datos_login.csv"))
 def test_login_validation(login_in_chrome, user, password, debe_funcionar):
     try:
         driver = login_in_chrome #toma los parametros user y password implicitamente
