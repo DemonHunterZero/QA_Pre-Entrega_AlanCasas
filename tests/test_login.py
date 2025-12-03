@@ -13,7 +13,7 @@ def test_login_validation(login_in_chrome, user, password, debe_funcionar):
     try:
         driver = login_in_chrome #toma los parametros user y password implicitamente
         
-        if debe_funcionar:
+        if debe_funcionar: #debe_funcionar == True:
             #Validacion de url luego del login        
             assert '/inventory.html' in driver.current_url, "No se redirigio al inventario"
             print("Login exitoso y validado")

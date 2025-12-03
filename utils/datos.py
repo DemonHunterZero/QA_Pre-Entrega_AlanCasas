@@ -6,7 +6,7 @@ def leer_csv_login(ruta_archivo):
     ruta = pathlib.Path(ruta_archivo)
 
     datos = []
-    with open(ruta_archivo, newline='', encoding="utf-8") as archivo:
+    with open(ruta, newline='', encoding="utf-8") as archivo:
         lector = csv.DictReader(archivo)
         for fila in lector:
             # Convierte la cadena 'True' a True, y 'False' a False por logica. Si true == true entonces verdadero si false == true entonces false

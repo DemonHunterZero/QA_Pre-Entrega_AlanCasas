@@ -27,7 +27,7 @@ def chrome_driver():
     chrome_options.add_argument('--start-maximized') # Opcional: ventana maximizada
 
     driver = webdriver.Chrome(options=chrome_options)
-    driver.implicitly_wait(10) #agregado (borrar sino funciona)
+    driver.implicitly_wait(5) #las esperas implicitas seran de 5s
     yield driver
     driver.quit()
 
