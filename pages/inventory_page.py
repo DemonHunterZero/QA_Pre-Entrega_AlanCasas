@@ -1,11 +1,10 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.options import Options # Importar Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
-import time
+#from selenium.common.exceptions import NoSuchElementException
+#from selenium.webdriver.chrome.options import Options # Importar Options
+#from selenium import webdriver
+#import time
 
 class InventoryPage:
 
@@ -47,11 +46,11 @@ class InventoryPage:
             nombre = producto.find_element(*self._ITEM_NAME).text
             #.strip elimina los espacios de la cadena de texto .lower los hace en minuscula
             if nombre.strip().lower() == nombre_producto.strip().lower():
-                boton = producto.find_element(self._ADD_TO_CART_BUTTON)
+                boton = producto.find_element(*self._ADD_TO_CART_BUTTON)
                 boton.click()
                 return self
-            else:
-                raise Exception(f"No se encontro el producto {nombre_producto}")
+            
+        raise Exception(f"No se encontro el producto {nombre_producto}")
             
     def abrir_carrito(self):
         self.wait.until(EC.element_to_be_clickable(self._CART_LINK)).click()
@@ -63,13 +62,9 @@ class InventoryPage:
                 self.wait.until(EC.visibility_of_element_located(self._CART_COUNT))
                 
                 # Ubica el elemento utilizando el desempaquetado (*)
-                contador_carrito = self.driver.find_element(*self._CART_COUNT) 
-                
+                contador_carrito = self.driver.find_element(*self._CART_COUNT)                
                 return int(contador_carrito.text)
                 
             except:
                 # Si hay un error (TimeoutException porque no aparece), retorna 0
-                return 0
-
-
-    
+                return 0    

@@ -1,11 +1,11 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
 from pages.inventory_page import InventoryPage
+import time
 import pytest
-
+#from selenium import webdriver
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.support.ui import WebDriverWait
 
 #py -m pytest tests/test_inventory.py -v para ejecutarlo como prueba
 #py -m pytest tests/test_inventory.py -v --html=report.html --self-contained-html para ejecutarlo y realizar el reporte html
@@ -21,12 +21,14 @@ def test_inventory(login_in_chrome, user, password):
 
         #Esta vacio el carrito al inicio?
         assert inventory_page.obtener_conteo_carrito() == 0
+        time.sleep(1)
 
         #Agregar primer producto
         inventory_page.agregar_primer_producto()
+        time.sleep(1)
 
         #Verificar que el contador del carrito haya cambiado
-        assert inventory_page.obtener_conteo_carrito() == 1, "Error, el contador debe ser 1" 
+        assert inventory_page.obtener_conteo_carrito() == 1, "Error, el contador debe ser 1"
 
         
 

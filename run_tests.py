@@ -4,9 +4,9 @@ import pytest
 
 #Lista de archivos para ejecutar
 test_files = [
-    "tests/test_inventory.py",
     "tests/test_login.py",
-    "tests/test_buy.py"
+    "tests/test_inventory.py",    
+    "tests/test_cart.py"
 ]
 
 #Argumentos para ejecutar las pruebas

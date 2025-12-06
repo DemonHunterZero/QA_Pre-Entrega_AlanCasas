@@ -35,3 +35,13 @@ def chrome_driver():
 def login_in_chrome(chrome_driver, user, password):
     LoginPage(chrome_driver).abrir_pagina().login_completo(user,password)
     return chrome_driver
+
+#pytest.hookimpl(hookwrapper=True)
+#def pytest_runtest_makereport(item,call):
+#    outcome = yield
+#    report = outcome.get_result()
+#
+#    if report.when in ("setup","call") and report.failed:
+#        driver = item.funcargs.get("driver", None)
+#        if driver:
+            
