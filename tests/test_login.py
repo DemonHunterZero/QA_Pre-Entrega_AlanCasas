@@ -40,5 +40,3 @@ def test_login_validation(login_in_chrome, user, password, debe_funcionar):
         print(f"Ocurrió un error inesperado: {e}")
         raise
 
-    finally:
-        driver.quit()

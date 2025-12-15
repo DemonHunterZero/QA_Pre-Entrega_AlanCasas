@@ -47,8 +47,6 @@ def test_inventory(login_in_chrome, user, password):
     except Exception as e:
         print(f"Ocurrió un error inesperado: {e}")
         raise
-    
-    finally:
-        driver.quit()
+
 
     

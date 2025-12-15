@@ -31,7 +31,7 @@ def test_cart(login_in_chrome, user, password):
         cartPage = CartPage(driver)
         productos_en_carrito = cartPage.obtener_productos_carrito()
         logger.info("Validando que se agregaron productos al carrito")
-        assert len(productos_en_carrito) == 1
+        assert len(productos_en_carrito) == 20 #ERROR FORZADO PARA SCREENSHOOT!!!! (debe ser 1)
     
 
         #Manejo de errores
@@ -44,6 +44,4 @@ def test_cart(login_in_chrome, user, password):
     except Exception as e:
         print(f"Ocurrió un error inesperado: {e}")
         raise
-    
-    finally:
-        driver.quit()
+

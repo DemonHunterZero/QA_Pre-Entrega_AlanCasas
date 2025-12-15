@@ -51,5 +51,3 @@ def test_cart_json(login_in_chrome, user, password, nombre_producto):
         print(f"Ocurrió un error inesperado: {e}")
         raise
     
-    finally:
-        driver.quit()
