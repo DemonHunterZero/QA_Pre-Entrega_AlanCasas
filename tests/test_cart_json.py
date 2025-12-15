@@ -5,7 +5,10 @@ from pages.cart_page import CartPage
 import time
 import pytest
 from utils.lector_json import leer_json_productos
+from utils.logger import logger
 
+
+logger.info("---EJECUTANDO TEST CART JSON---")
 RUTA_JSON = "datos/productos.json"
 
 #py -m pytest tests/test_cart_json.py -v para ejecutarlo como prueba
@@ -20,14 +23,17 @@ def test_cart_json(login_in_chrome, user, password, nombre_producto):
 
         #Agregar productos al carrito
         time.sleep(1)
+        logger.info(f"Agregando producto: {nombre_producto} al carrito")
         inventory_page.agregar_producto_por_nombre(nombre_producto)
 
         #Abrir carrito
         time.sleep(1)
+        logger.info("Abriendo carrito")
         inventory_page.abrir_carrito()
 
         #Validar que se haya agregador producto
         time.sleep(3)
+        logger.info(f"Validando que se haya agregado el producto {nombre_producto}")
         cartPage = CartPage(driver)
 
         assert cartPage.obtener_nombre_productor_carrito() == nombre_producto

@@ -19,7 +19,7 @@ class CartPage:
         return self
 
     def obtener_productos_carrito(self):
-        productos = self.wait.until(EC.visibility_of_all_elements_located(*self._CART_ITEMS))
+        productos = self.wait.until(EC.visibility_of_all_elements_located(self._CART_ITEMS))
         return productos
     
     def obtener_nombre_productor_carrito(self):
