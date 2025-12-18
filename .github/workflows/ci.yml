@@ -31,7 +31,7 @@ jobs:
       - name: Cache dependencias pip
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pip
+          path: ${{ env.PIP_CACHE }} #Se usa la variable de entorno PIP_CACHE para dar la ruta
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
@@ -43,6 +43,10 @@ jobs:
       # 5️⃣ Ejecutar tests
       - name: Ejecutar tests
         run: python run_tests.py
+
+      # 6️⃣ Crear carpetas
+      - name: Crear carpetas si no existen
+        run: mkdir -p reports logs  
 
       # 6️⃣ Subir artefactos
       - name: Subir HTML report
