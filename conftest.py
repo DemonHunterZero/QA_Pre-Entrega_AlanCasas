@@ -82,8 +82,9 @@ def pytest_runtest_makereport(item, call):
 
                 # Adjuntar al reporte HTML            
                 extra = getattr(report, "extra", []) # Intentar obtener la lista 'extra' del reporte, que pytest-html usa para contenido adicional. Si no existe, inicializarla como una lista vacía.
+                relative_path = f"screens/{file_name.name}"
                 extra.append(
-                    pytest_html.extras.image(str(file_name))
+                    pytest_html.extras.image(relative_path)
                 ) # Esto hace que la imagen aparezca incrustada en el reporte HTML.
                 report.extra = extra # Asignar la lista 'extra' modificada de nuevo al reporte.
             except Exception as e:

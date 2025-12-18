@@ -48,7 +48,7 @@ jobs:
       - name: Crear carpetas si no existen
         run: mkdir -p reports logs  
 
-      # 6️⃣ Subir artefactos
+      # 7️⃣ Subir artefactos
       - name: Subir HTML report
         uses: actions/upload-artifact@v4
         with:
