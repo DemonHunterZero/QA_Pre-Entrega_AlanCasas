@@ -1,15 +1,21 @@
 name: CI TalentoTech
 
+#DISPARADORES O EVENTOS (CUANDO SE EJECUTA)
 on:
   push:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
-
+    
+#TAREA A REALIZAR
 jobs:
   test:
     runs-on: ubuntu-latest
+    env: #Variables de entorno
+      PYTHON_VERSION: '3.13'
+      PIP_CACHE: ~/.cache/pip
 
+    #PASOS DE LA TAREA
     steps:
       # 1️⃣ Checkout
       - name: Checkout codigo
@@ -19,7 +25,7 @@ jobs:
       - name: Instalar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{ env.PYTHON_VERSION }} #tambien se puede poner directamente 3.13
 
       # 3️⃣ Cache pip
       - name: Cache dependencias pip
